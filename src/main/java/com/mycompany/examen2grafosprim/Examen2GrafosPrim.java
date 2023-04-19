@@ -31,7 +31,7 @@ public class Examen2GrafosPrim {
             Txt.nextLine();
             switch (OP) {
                 case 1:
-                    System.out.println("***Algoritmo BPP***");
+                    System.out.println("***Algoritmo de Prim***");
                     System.out.println("Dame el nombre de archivo a abrir");
                     Archivo = Txt.nextLine();                  
                     if (!OperAr.exists(Archivo)) {
@@ -59,54 +59,20 @@ public class Examen2GrafosPrim {
                         System.out.println("El grafo es el siguiente:");
                         NODO.MostrarLista(Cont);
                         System.out.println("");
-                        System.out.print("Dame el vertice inicial para comenzar el recorrido: ");
+                        System.out.print("Dame el vertice inicial: ");
                         Vertice = Txt.next().charAt(0);
                         NODO.Opcion1(Vertice);
                     }
                     break;
-                case 2:
-                    System.out.println("Algoritmo BPA");
-                    System.out.println("Dame el nombre de archivo a abrir");
-                    Archivo = Txt.nextLine();
-                    if (!OperAr.exists(Archivo)) {
-                        System.out.println("ERROR!, El archivo no existe o esta mal escrito");
-                    } else {
-                        System.out.println("Se ha extraido la informacion del archivo: " + Archivo);
-                        try {
-                            FileReader FR = new FileReader(Archivo);
-                            while ((c = FR.read()) != -1) {
-                                if (c == '*') {
-                                    c = FR.read();
-                                    NODO.InsertarFinal((char) c);
-                                    Cont += 1;
-                                } else {
-                                    if (c == '-') {
-                                        c = FR.read();
-                                        NODO.InsertaArista((char) c, Cont);
-                                    }
-                                }
-                            }
-                            FR.close();
-                        } catch (FileNotFoundException ex) {
-                            Logger.getLogger(ArchivoMetodos.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        System.out.println("El grafo es el siguiente:");
-                        NODO.MostrarLista(Cont);
-                        System.out.println("");
-                        System.out.print("Dame el vertice inicial para comenzar el recorrido: ");
-                        Vertice = Txt.next().charAt(0);
-                        NODO.opcion2(Vertice);
-                    }
-                    break;
+
             }
-        } while (OP != 3);
+        } while (OP != 2);
         System.out.println("Saliendo del programa...");
     }
 
     public static void Menu() {
         System.out.println("----!!MENU PRINCIPAL!!----\n"
-                        +"1.Recorrer un grafo en: Búsqueda primero en profundidad (bpp())\n"
-                        +"2.Recorrer un grafo en: Búsqueda primero en anchura o amplitud (bpa())\n"
-                        +"3.Salir del programa");
+                        +"1.Algoritmo de Prim\n"
+                        +"2.Salir del programa");
     }
 }
